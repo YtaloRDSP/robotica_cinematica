@@ -13,7 +13,7 @@
         <script src="func.js"></script>
     </head>
     <body>
-
+        Barra de Teste
         <div class="container">
 
             <div class="jumbotron jumbotron-fluid bg-transparent pb-0 pt-2">
@@ -52,34 +52,34 @@
           
             <div class="tab-content">
                 <div id="m1" class="container tab-pane active"><br>
-                    <div class="card mx-auto" style="width:400px">
+                    <div class="card mx-auto" style="width:30rem">
                         <div class="card-body">
                             <h4 class="card-title">Manipulador R</h4>
-                            <select class="form-select" onchange="modo()" id="modo_R">
+                            <select class="form-select" onchange="modo('R')" id="modo_R">
                                 <option selected value="1">Direta</option>
                                 <option value="2">Inversa</option>
                             </select>
                             <div id="direta_R">
                                 <p class="card-text text-justify">
                                     <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">D</span>
-                                    </div>
-                                    
-                                    <input type="number" id="d_R" class="form-control" placeholder="Distância" aria-label="Username" aria-describedby="basic-addon1">
-                                    
-                                    <select class="form-select" id="unidade_dR">
-                                        <option selected>mm</option>
-                                        <option>cm</option>
-                                        <option>m</option>
-                                    </select>
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">D</span>
+                                        </div>
+                                        
+                                        <input type="number" id="d_R" class="form-control" placeholder="Distância">
+                                        
+                                        <select class="form-select" id="unidade_dR">
+                                            <option selected>mm</option>
+                                            <option>cm</option>
+                                            <option>m</option>
+                                        </select>
                                     </div>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon2">&theta;</span>
+                                            <span class="input-group-text">&theta;</span>
                                         </div>
                                     
-                                        <input type="number" id="a_R" pattern="[0-9]" class="form-control" placeholder="Ângulo" aria-label="Username" aria-describedby="basic-addon1">
+                                        <input type="number" id="a_R" class="form-control" placeholder="Ângulo">
                                     
                                         <select class="form-select" id="unidade_aR">
                                             <option selected value="1">Graus</option>
@@ -93,17 +93,16 @@
                                     <p class="card-text text-justify">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend" style="margin-right: 1rem;">
-                                                <span class="input-group-text" id="basic-addon1">X</span>
+                                                <span class="input-group-text">X</span>
                                             </div>
                                         
-                                            <input type="text" readonly class="form-control-plaintext" id="results_xR" placeholder="Distância" aria-label="Username" aria-describedby="basic-addon1">
-                                        
+                                            <input type="text" readonly class="form-control-plaintext" id="results_xR" placeholder="Distância">
                                         </div>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend" style="margin-right: 1rem;">
-                                                <span class="input-group-text" id="basic-addon2">Y</span>
+                                                <span class="input-group-text">Y</span>
                                             </div>
-                                            <input type="text" readonly class="form-control-plaintext" id="results_yR" placeholder="Ângulo" aria-label="Username" aria-describedby="basic-addon1">   
+                                            <input type="text" readonly class="form-control-plaintext" id="results_yR" placeholder="Ângulo">   
                                         </div>
                                     </p>
                                 </div>
@@ -112,30 +111,25 @@
                             <div id="inversa_R" class="invisible">
                                 <p class="card-text text-justify">
                                     <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">X</span>
-                                    </div>
-                                    
-                                    <input type="number" id="x_R" class="form-control" placeholder="Valor de X" aria-label="Username" aria-describedby="basic-addon1">
-                                    
-                                    <select class="form-select" id="unidade_xR">
-                                        <option selected>mm</option>
-                                        <option>cm</option>
-                                        <option>m</option>
-                                    </select>
-                                    </div>
-                                    <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon2">Y</span>
+                                            <span class="input-group-text">X</span>
                                         </div>
-                                    
-                                        <input type="number" id="y_R" pattern="[0-9]" class="form-control" placeholder="Valor de Y" aria-label="Username" aria-describedby="basic-addon1">
-                                    
-                                        <select class="form-select" id="unidade_yR">
+                                        
+                                        <input type="number" id="x_R" class="form-control" placeholder="Valor de X">
+                                        
+                                        <select class="form-select" id="unidade_xR">
                                             <option selected>mm</option>
                                             <option>cm</option>
                                             <option>m</option>
                                         </select>
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Y</span>
+                                        </div>
+                                    
+                                        <input type="number" id="y_R" class="form-control" placeholder="Valor de Y">
+                                
                                     </div>
                                     <button type="button" class="btn btn-primary" onclick="R_inversa()">Calcular</button>
                                 </p>
@@ -144,17 +138,17 @@
                                     <p class="card-text text-justify">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend" style="margin-right: 1rem;">
-                                                <span class="input-group-text" id="basic-addon1">D</span>
+                                                <span class="input-group-text">D</span>
                                             </div>
                                         
-                                            <input type="text" readonly class="form-control-plaintext" id="results_dR" placeholder="Distância" aria-label="Username" aria-describedby="basic-addon1">
+                                            <input type="text" readonly class="form-control-plaintext" id="results_dR" placeholder="Distância">
                                         
                                         </div>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend" style="margin-right: 1rem;">
-                                                <span class="input-group-text" id="basic-addon2">theta</span>
+                                                <span class="input-group-text">&theta;</span>
                                             </div>
-                                            <input type="text" readonly class="form-control-plaintext" id="results_aR" placeholder="Ângulo" aria-label="Username" aria-describedby="basic-addon1">   
+                                            <input type="text" readonly class="form-control-plaintext" id="results_aR" placeholder="Ângulo">   
                                         </div>
                                     </p>
                                 </div>
@@ -163,13 +157,125 @@
                     </div>
                 </div>
 
-                <div id="m2" class="container tab-pane fade"><br>
-                    <div class="card mx-auto" style="width:50rem">
+                <div id="m2" class="container tab-pane active"><br>
+                    <div class="card mx-auto" style="width:30rem">
                         <div class="card-body">
                             <h4 class="card-title">Manipulador RR</h4>
-                            <p class="card-text text-justify">
-                                Outros dados
-                            </p>
+                            <select class="form-select" onchange="modo('RR')" id="modo_RR">
+                                <option selected value="1">Direta</option>
+                                <option value="2">Inversa</option>
+                            </select>
+                            <div id="direta_RR">
+                                <p class="card-text text-justify">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">L1</span>
+                                        </div>
+                                        <input type="number" id="l1_RR" class="form-control" placeholder="Comprimento L1">
+                                        <select class="form-select" id="unidade_lRR">
+                                            <option selected>mm</option>
+                                            <option>cm</option>
+                                            <option>m</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">L2</span>
+                                        </div>
+                                        <input type="number" id="l2_RR" class="form-control" placeholder="Comprimento L2">
+                                    </div>
+                
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">&theta;1</span>
+                                        </div>
+                                        <input type="number" id="a1_RR" class="form-control" placeholder="Ângulo 1">
+                                        <select class="form-select" id="unidade_aRR">
+                                            <option selected value="1">Graus</option>
+                                            <option value="2">Radianos</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">&theta;2</span>
+                                        </div>
+                                        <input type="number" id="a2_RR" class="form-control" placeholder="Ângulo 2">
+                                    </div>
+                                    <button type="button" class="btn btn-primary" onclick="RR_direta()">Calcular</button>
+                                </p>
+                            
+                                <div id="results_direta_RR" class="invisible">
+                                    <p class="card-text text-justify">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend" style="margin-right: 1rem;">
+                                                <span class="input-group-text">X</span>
+                                            </div>
+                                            <input type="text" readonly class="form-control-plaintext" id="results_xRR">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend" style="margin-right: 1rem;">
+                                                <span class="input-group-text">Y</span>
+                                            </div>
+                                            <input type="text" readonly class="form-control-plaintext" id="results_yRR">   
+                                        </div>
+                                    </p>
+                                </div>
+                            </div>
+                
+                            <div id="inversa_RR" class="invisible">
+                                <p class="card-text text-justify">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">X</span>
+                                        </div>                       
+                                        <input type="number" id="x_RR" class="form-control" placeholder="Valor de X">                        
+                                        <select class="form-select" id="unidade_xRR">
+                                            <option selected>mm</option>
+                                            <option>cm</option>
+                                            <option>m</option>
+                                        </select>
+                                    </div>
+                
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Y</span>
+                                        </div>
+                                        <input type="number" id="y_RR" class="form-control" placeholder="Valor de Y">
+                                    </div>
+                
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">L1</span>
+                                        </div>
+                                        <input type="number" id="l1_iRR" class="form-control" placeholder="Comprimento L1">
+                                    </div>
+                
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">L2</span>
+                                        </div>
+                                        <input type="number" id="l2_iRR" class="form-control" placeholder="Comprimento L2">
+                                    </div>
+                                    <button type="button" class="btn btn-primary" onclick="RR_inversa()">Calcular</button>
+                                </p>
+                            
+                                <div id="results_inversa_RR" class="invisible">
+                                    <p class="card-text text-justify">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend" style="margin-right: 1rem;">
+                                                <span class="input-group-text">&theta;1</span>
+                                            </div>
+                                            <input type="text" readonly class="form-control-plaintext" id="results_a1RR">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend" style="margin-right: 1rem;">
+                                                <span class="input-group-text">&theta;2</span>
+                                            </div>
+                                            <input type="text" readonly class="form-control-plaintext" id="results_a2RR">   
+                                        </div>
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
