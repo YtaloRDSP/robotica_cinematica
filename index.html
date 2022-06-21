@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Robótica</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="index.css">
+        <script src="func.js"></script>
+    </head>
+    <body>
+
+        <div class="container">
+
+            <div class="jumbotron jumbotron-fluid bg-transparent pb-0 pt-2">
+                <div class="container">
+                    <h1 class="display-4 text-dark font-weight-bold">Robótica</h1>
+                    <p class="text-muted">Calculos de Cinemática Direta e Inversa dos Mecanismos.</p>
+                </div>
+            </div>
+
+            <ul class="nav nav-pills nav-justified" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active shadow-sm" data-toggle="pill" href="#m1">Manipulador R</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link shadow-sm" data-toggle="pill" href="#m2">Manipulador RR</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link shadow-sm" data-toggle="pill" href="#m3">Manipulador RL</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link shadow-sm" data-toggle="pill" href="#m4">Manipulador RRR</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link shadow-sm" data-toggle="pill" href="#m5">Manipulador RLR</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link shadow-sm" data-toggle="pill" href="#m3">Manipulador TRR</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link shadow-sm" data-toggle="pill" href="#m4">Manipulador TRL:R</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link shadow-sm" data-toggle="pill" href="#m5">Manipulador VVL:R</a>
+                </li>
+            </ul>
+          
+            <div class="tab-content">
+                <div id="m1" class="container tab-pane active"><br>
+                    <div class="card mx-auto" style="width:400px">
+                        <div class="card-body">
+                            <h4 class="card-title">Manipulador R</h4>
+                            <select class="form-select" onchange="modo()" id="modo_R">
+                                <option selected value="1">Direta</option>
+                                <option value="2">Inversa</option>
+                            </select>
+                            <div id="direta_R">
+                                <p class="card-text text-justify">
+                                    <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">D</span>
+                                    </div>
+                                    
+                                    <input type="number" id="d_R" class="form-control" placeholder="Distância" aria-label="Username" aria-describedby="basic-addon1">
+                                    
+                                    <select class="form-select" id="unidade_dR">
+                                        <option selected>mm</option>
+                                        <option>cm</option>
+                                        <option>m</option>
+                                    </select>
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon2">&theta;</span>
+                                        </div>
+                                    
+                                        <input type="number" id="a_R" pattern="[0-9]" class="form-control" placeholder="Ângulo" aria-label="Username" aria-describedby="basic-addon1">
+                                    
+                                        <select class="form-select" id="unidade_aR">
+                                            <option selected value="1">Graus</option>
+                                            <option value="2">Radianos</option>
+                                        </select>
+                                    </div>
+                                    <button type="button" class="btn btn-primary" onclick="R_direta()">Calcular</button>
+                                </p>
+                            
+                                <div id="results_direta_R" class="invisible">
+                                    <p class="card-text text-justify">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend" style="margin-right: 1rem;">
+                                                <span class="input-group-text" id="basic-addon1">X</span>
+                                            </div>
+                                        
+                                            <input type="text" readonly class="form-control-plaintext" id="results_xR" placeholder="Distância" aria-label="Username" aria-describedby="basic-addon1">
+                                        
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend" style="margin-right: 1rem;">
+                                                <span class="input-group-text" id="basic-addon2">Y</span>
+                                            </div>
+                                            <input type="text" readonly class="form-control-plaintext" id="results_yR" placeholder="Ângulo" aria-label="Username" aria-describedby="basic-addon1">   
+                                        </div>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div id="inversa_R" class="invisible">
+                                <p class="card-text text-justify">
+                                    <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">X</span>
+                                    </div>
+                                    
+                                    <input type="number" id="x_R" class="form-control" placeholder="Valor de X" aria-label="Username" aria-describedby="basic-addon1">
+                                    
+                                    <select class="form-select" id="unidade_xR">
+                                        <option selected>mm</option>
+                                        <option>cm</option>
+                                        <option>m</option>
+                                    </select>
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon2">Y</span>
+                                        </div>
+                                    
+                                        <input type="number" id="y_R" pattern="[0-9]" class="form-control" placeholder="Valor de Y" aria-label="Username" aria-describedby="basic-addon1">
+                                    
+                                        <select class="form-select" id="unidade_yR">
+                                            <option selected>mm</option>
+                                            <option>cm</option>
+                                            <option>m</option>
+                                        </select>
+                                    </div>
+                                    <button type="button" class="btn btn-primary" onclick="R_inversa()">Calcular</button>
+                                </p>
+                            
+                                <div id="results_inversa_R" class="invisible">
+                                    <p class="card-text text-justify">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend" style="margin-right: 1rem;">
+                                                <span class="input-group-text" id="basic-addon1">D</span>
+                                            </div>
+                                        
+                                            <input type="text" readonly class="form-control-plaintext" id="results_dR" placeholder="Distância" aria-label="Username" aria-describedby="basic-addon1">
+                                        
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend" style="margin-right: 1rem;">
+                                                <span class="input-group-text" id="basic-addon2">theta</span>
+                                            </div>
+                                            <input type="text" readonly class="form-control-plaintext" id="results_aR" placeholder="Ângulo" aria-label="Username" aria-describedby="basic-addon1">   
+                                        </div>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="m2" class="container tab-pane fade"><br>
+                    <div class="card mx-auto" style="width:50rem">
+                        <div class="card-body">
+                            <h4 class="card-title">Manipulador RR</h4>
+                            <p class="card-text text-justify">
+                                Outros dados
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="m3" class="container tab-pane fade"><br>
+                    <div class="card mx-auto" style="width:400px">
+                        <div class="card-body">
+                            <h4 class="card-title">Manipulador RL</h4>
+                            <p class="card-text text-justify">
+                                Outros dados
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="m4" class="container tab-pane fade"><br>
+                    <div class="card mx-auto" style="width:400px">
+                        <div class="card-body">
+                            <h4 class="card-title">Manipulador RRR</h4>
+                            <p class="card-text text-justify">
+                                Outros dados
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="m5" class="container tab-pane fade"><br>
+                    <div class="card mx-auto" style="width:400px">
+                        <div class="card-body">
+                            <h4 class="card-title">Manipulador RLR</h4>
+                            <p class="card-text text-justify">
+                                Outros dados
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="m6" class="container tab-pane fade"><br>
+                    <div class="card mx-auto" style="width:400px">
+                        <div class="card-body">
+                            <h4 class="card-title">Manipulador TRR</h4>
+                            <p class="card-text text-justify">
+                                Outros dados
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="m7" class="container tab-pane fade"><br>
+                    <div class="card mx-auto" style="width:400px">
+                        <div class="card-body">
+                            <h4 class="card-title">Manipulador TRL:R</h4>
+                            <p class="card-text text-justify">
+                                Outros dados
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="m8" class="container tab-pane fade"><br>
+                    <div class="card mx-auto" style="width:400px">
+                        <div class="card-body">
+                            <h4 class="card-title">Manipulador VVL:R</h4>
+                            <p class="card-text text-justify">
+                                Outros dados
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </body>
+</html>
