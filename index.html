@@ -42,11 +42,11 @@
                     <a class="nav-link shadow-sm" data-toggle="pill" href="#m6" onclick="modo('TRR')">Manipulador TRR</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link shadow-sm" data-toggle="pill" href="#m7">Manipulador TRL:R</a>
+                    <a class="nav-link shadow-sm" data-toggle="pill" href="#m7" onclick="modo('TRLR')">Manipulador TRL:R</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link shadow-sm" data-toggle="pill" href="#m8">Manipulador VVL:R</a>
-                </li>
+                </li> -->
             </ul>
           
             <div class="tab-content">
@@ -996,49 +996,6 @@
                                             </div>
                                             <input type="text" readonly class="form-control-plaintext" id="results_a3TRR">   
                                         </div>
-                                        <hr>
-                                        <h6>Precisão Cartesiana</h6>
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">&theta;1</span>
-                                            </div>
-                                            <input type="number" id="pc_a1TRR" class="form-control" placeholder="Ângulo 1 Desejado">
-                                        </div>
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">&theta;2</span>
-                                            </div>
-                                            <input type="number" id="pc_a2TRR" class="form-control" placeholder="Ângulo 2 Desejado">
-                                        </div>
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">&theta;3</span>
-                                            </div>
-                                            <input type="number" id="pc_a3TRR" class="form-control" placeholder="Ângulo 3 Desejado">
-                                        </div>
-                                        <button type="button" class="btn btn-primary" onclick="TRR.precisao()">Calcular</button>
-                                    </p>
-                                </div>
-                                <div id="results_precisao_TRR" class="invisible">
-                                    <p class="card-text text-justify">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend" style="margin-right: 1rem;">
-                                                <span class="input-group-text">&#916;X</span>
-                                            </div>
-                                            <input type="text" readonly class="form-control-plaintext" id="results_pcXTRR">
-                                        </div>
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend" style="margin-right: 1rem;">
-                                                <span class="input-group-text">&#916;Y</span>
-                                            </div>
-                                            <input type="text" readonly class="form-control-plaintext" id="results_pcYTRR">   
-                                        </div>
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend" style="margin-right: 1rem;">
-                                                <span class="input-group-text">&#916;Z</span>
-                                            </div>
-                                            <input type="text" readonly class="form-control-plaintext" id="results_pcZTRR">   
-                                        </div>
                                     </p>
                                 </div>
                             </div>
@@ -1047,17 +1004,185 @@
                 </div>
 
                 <div id="m7" class="container tab-pane fade"><br>
-                    <div class="card mx-auto" style="width:400px">
+                    <div class="card mx-auto" style="width:30rem">
                         <div class="card-body">
                             <h4 class="card-title">Manipulador TRL:R</h4>
-                            <p class="card-text text-justify">
-                                Outros dados
-                            </p>
+                            <select class="form-select" onchange="modo('TRLR')" id="modo_TRLR">
+                                <option selected value="1">Direta</option>
+                                <option value="2">Inversa</option>
+                            </select>
+                            <div id="direta_TRLR">
+                                <p class="card-text text-justify">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">L1</span>
+                                        </div>
+                                        <input type="number" id="l1_TRLR" class="form-control" placeholder="Comprimento L1">
+                                        <select class="form-select" id="unidade_lTRLR">
+                                            <option selected>mm</option>
+                                            <option>cm</option>
+                                            <option>m</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">L2</span>
+                                        </div>
+                                        <input type="number" id="l2_TRLR" class="form-control" placeholder="Comprimento L2">
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">L3</span>
+                                        </div>
+                                        <input type="number" id="l3_TRLR" class="form-control" placeholder="Comprimento L3">
+                                    </div>
+
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">&theta;1</span>
+                                        </div>
+                                        <input type="number" id="a1_TRLR" class="form-control" placeholder="Ângulo 1">
+                                        <select class="form-select" id="unidade_aTRLR">
+                                            <option selected value="1">Graus</option>
+                                            <option value="2">Radianos</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">&theta;2</span>
+                                        </div>
+                                        <input type="number" id="a2_TRLR" class="form-control" placeholder="Ângulo 2">
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">&theta;3</span>
+                                        </div>
+                                        <input type="number" id="a3_TRLR" class="form-control" placeholder="Ângulo 3">
+                                    </div>
+                                    <button type="button" class="btn btn-primary" onclick="TRLR.direta()">Calcular</button>
+                                </p>
+                            
+                                <div id="results_direta_TRLR" class="invisible">
+                                    <p class="card-text text-justify">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend" style="margin-right: 1rem;">
+                                                <span class="input-group-text">X</span>
+                                            </div>
+                                            <input type="text" readonly class="form-control-plaintext" id="results_xTRLR">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend" style="margin-right: 1rem;">
+                                                <span class="input-group-text">Y</span>
+                                            </div>
+                                            <input type="text" readonly class="form-control-plaintext" id="results_yTRLR">   
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend" style="margin-right: 1rem;">
+                                                <span class="input-group-text">Z</span>
+                                            </div>
+                                            <input type="text" readonly class="form-control-plaintext" id="results_zTRLR">   
+                                        </div>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div id="inversa_TRLR" class="invisible">
+                                <p class="card-text text-justify">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">X</span>
+                                        </div>                       
+                                        <input type="number" id="x_TRLR" class="form-control" placeholder="Valor de X">                        
+                                        <select class="form-select" id="unidade_xTRLR">
+                                            <option selected>mm</option>
+                                            <option>cm</option>
+                                            <option>m</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Y</span>
+                                        </div>
+                                        <input type="number" id="y_TRLR" class="form-control" placeholder="Valor de Y">
+                                    </div>
+
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Z</span>
+                                        </div>
+                                        <input type="number" id="z_TRLR" class="form-control" placeholder="Valor de Z">
+                                    </div>
+
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">L1</span>
+                                        </div>
+                                        <input type="number" id="l1_iTRLR" class="form-control" placeholder="Comprimento L1">
+                                    </div>
+
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">L2</span>
+                                        </div>
+                                        <input type="number" id="l2_iTRLR" class="form-control" placeholder="Comprimento L2">
+                                    </div>
+
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">L3</span>
+                                        </div>
+                                        <input type="number" id="l3_iTRLR" class="form-control" placeholder="Comprimento L3">
+                                    </div>
+
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">&gamma;</span>
+                                        </div>
+                                        <input type="number" id="gama_iTRLR" class="form-control" placeholder="Angulo Gama">
+                                    </div>
+
+                                    <button type="button" class="btn btn-primary" onclick="TRLR.inversa()">Calcular</button>
+                                </p>
+                            
+                                <div id="results_inversa_TRLR" class="invisible">
+                                    <p class="card-text text-justify">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend" style="margin-right: 1rem;">
+                                                <span class="input-group-text">&theta;1</span>
+                                            </div>
+                                            <input type="text" readonly class="form-control-plaintext" id="results_a1TRLR">
+                                            <select class="form-select" id="result_unidade_aTRLR" onchange="TRLR.unidade()">
+                                                <option selected value="1">Graus</option>
+                                                <option value="2">Radianos</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend" style="margin-right: 1rem;">
+                                                <span class="input-group-text">&theta;2</span>
+                                            </div>
+                                            <input type="text" readonly class="form-control-plaintext" id="results_a2TRLR">   
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend" style="margin-right: 1rem;">
+                                                <span class="input-group-text">&theta;3</span>
+                                            </div>
+                                            <input type="text" readonly class="form-control-plaintext" id="results_a3TRLR">   
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend" style="margin-right: 1rem;">
+                                                <span class="input-group-text">L2</span>
+                                            </div>
+                                            <input type="text" readonly class="form-control-plaintext" id="results_l2TRLR">   
+                                        </div>
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div id="m8" class="container tab-pane fade"><br>
+                <!-- <div id="m8" class="container tab-pane fade"><br>
                     <div class="card mx-auto" style="width:400px">
                         <div class="card-body">
                             <h4 class="card-title">Manipulador VVL:R</h4>
@@ -1066,7 +1191,7 @@
                             </p>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
             </div>
         </div>

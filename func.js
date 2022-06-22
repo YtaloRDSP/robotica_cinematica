@@ -586,6 +586,141 @@ var TRR = {
     }
 }
 
+var TRLR = {
+    x: 0,
+    y: 0,
+    z: 0,
+    l1: 0,
+    l2: 0,
+    l3: 0,
+    a1: 0,
+    a2: 0,
+    a3: 0,
+    gama: 0,
+    delta_x: 0,
+    delta_y: 0,
+    delta_z: 0,
+    direta: function(){
+        this.l1 = document.getElementById("l1_TRLR").value;
+        this.l2 = document.getElementById("l2_TRLR").value;
+        this.l3 = document.getElementById("l3_TRLR").value;
+        this.a1 = document.getElementById("a1_TRLR").value;
+        this.a2 = document.getElementById("a2_TRLR").value;
+        this.a3 = document.getElementById("a3_TRLR").value;
+        if(this.l1 == '' || this.l2 == '' || this.l3 == '' || this.a1 == '' || this.a2 == '' || this.a3 == ''){
+            alert("Insira valores para o calculo")
+            return null        
+        } 
+        let unidade_d = document.getElementById("unidade_lTRLR").value;
+        let unidade_a = document.getElementById("unidade_aTRLR").value;
+        if(unidade_a == 1){
+            this.a1 = this.a1 * (Math.PI/180)
+            this.a2 = this.a2 * (Math.PI/180)
+            this.a3 = this.a3 * (Math.PI/180)
+        }
+        this.l1 = Number(this.l1)
+        this.l2 = Number(this.l2)
+        this.l3 = Number(this.l3)
+        this.a1 = Number(this.a1)
+        this.a2 = Number(this.a2)
+        this.a3 = Number(this.a3)
+        document.getElementById("results_direta_TRLR").classList.remove("invisible");
+        document.getElementById("results_direta_TRLR").classList.add("visible");
+
+        let d = this.l2 * Math.cos(this.a2) + this.l3 * Math.cos(this.a2 + this.a3)
+        this.x = d * Math.cos(this.a1)
+        this.y = d * Math.sin(this.a1)
+        this.z = this.l1 + this.l2 * Math.sin(this.a2) + this.l3 * Math.sin(this.a2 + this.a3)
+
+        document.getElementById("results_xTRLR").value = this.x.toFixed(5) + " " + unidade_d
+        document.getElementById("results_yTRLR").value = this.y.toFixed(5) + " " + unidade_d
+        document.getElementById("results_zTRLR").value = this.z.toFixed(5) + " " + unidade_d
+    },
+    inversa: function(){
+        this.l1 = document.getElementById("l1_iTRLR").value;
+        this.l2 = document.getElementById("l2_iTRLR").value;
+        this.l3 = document.getElementById("l3_iTRLR").value;
+        this.gama = document.getElementById("gama_iTRLR").value;
+        this.x = document.getElementById("x_TRLR").value;
+        this.y = document.getElementById("y_TRLR").value;
+        this.z = document.getElementById("z_TRLR").value;
+
+        if(this.l1 == '' || this.l2 == '' || this.l3 == '' || this.gama == '' || this.x == '' || this.y == '' || this.z == ''){
+            alert("Insira valores para o calculo")
+            return null        
+        }
+
+        this.l1 = Number(this.l1)
+        this.l2 = Number(this.l2)
+        this.l3 = Number(this.l3)
+        this.gama = Number(this.gama)
+        this.x = Number(this.x)
+        this.y = Number(this.y)
+        this.z = Number(this.z)
+
+        let unidade_d = document.getElementById("result_unidade_aTRLR").value;
+        if(unidade_d == 1){
+            this.gama = this.gama * (Math.PI/180)
+        }
+
+        document.getElementById("results_inversa_TRLR").classList.remove("invisible");
+        document.getElementById("results_inversa_TRLR").classList.add("visible");
+
+        let d = Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2))
+        let d4 = d - this.l3*Math.cos(this.gama)
+        let z4 = this.z - this.l3*Math.cos(this.gama)
+
+        this.a2 = Math.atan((z4-this.a1)/d4)
+        this.l2 = Math.sqrt(Math.pow((z4 - this.l1), 2) + d4)
+        this.a3 = this.gama - this.a2
+        this.a1 = Math.atan(this.x/this.y)
+
+        this.unidade()
+
+        let un_d = document.getElementById("unidade_xTRLR").value;
+        document.getElementById("results_l2TRLR").value = (this.l2).toFixed(5) + " " + un_d
+    },
+    unidade: function(){
+        let unidade_d = document.getElementById("result_unidade_aTRLR").value;
+        if(unidade_d == 1){
+            document.getElementById("results_a1TRLR").value = (((180 * this.a1)/Math.PI).toFixed(5)) + "\xB0"
+            document.getElementById("results_a2TRLR").value = (((180 * this.a2)/Math.PI).toFixed(5)) + "\xB0"
+            document.getElementById("results_a3TRLR").value = (((180 * this.a3)/Math.PI).toFixed(5)) + "\xB0"
+        } else{
+            document.getElementById("results_a1TRLR").value = (this.a1).toFixed(5) + " rad"
+            document.getElementById("results_a2TRLR").value = (this.a2).toFixed(5) + " rad"
+            document.getElementById("results_a3TRLR").value = (this.a3).toFixed(5) + " rad"
+        }
+    },
+    precisao: function(){
+        let a1_linha = document.getElementById("pc_a1TRLR").value;
+        let a2_linha = document.getElementById("pc_a2TRLR").value;
+        let a3_linha = document.getElementById("pc_a3TRLR").value;
+        if(a1_linha == '' || a2_linha == '' || a3_linha == ''){
+            alert("Insira valores para o calculo")
+            return null        
+        } 
+
+        a1_linha = Number(a1_linha)
+        a2_linha = Number(a2_linha)
+        a3_linha = Number(a3_linha)
+        let unidade_d = document.getElementById("result_unidade_aTRLR").value;
+        if(unidade_d == 1){
+            a1_linha = a1_linha * (Math.PI/180)
+            a2_linha = a2_linha * (Math.PI/180)
+            a3_linha = a3_linha * (Math.PI/180)
+        }
+
+        document.getElementById("results_precisao_TRLR").classList.remove("invisible");
+        document.getElementById("results_precisao_TRLR").classList.add("visible");
+
+        this.delta_x = Math.abs(-this.l1*Math.sin(this.a1) - this.l2 * Math.sin(this.a1 + this.a2) - this.l3 * Math.sin(this.a1 + this.a2 + this.a3))*(a1_linha-this.a1) + Math.abs(-this.l2 * Math.sin(this.a1 + this.a2) - this.l3 * Math.sin(this.a1 + this.a2 + this.a3))*(a2_linha-this.a2) + Math.abs(-this.l3 * Math.sin(this.a1 + this.a2 + this.a3))*(a3_linha-this.a3)
+        this.delta_y = Math.abs(this.l1*Math.cos(this.a1) + this.l2 * Math.cos(this.a1 + this.a2) + this.l3 * Math.cos(this.a1 + this.a2 + this.a3))*(a1_linha-this.a1) + Math.abs(this.l2 * Math.sin(this.a1 + this.a2) + this.l3 * Math.cos(this.a1 + this.a2 + this.a3))*(a2_linha-this.a2) + Math.abs(this.l3 * Math.cos(this.a1 + this.a2 + this.a3))*(a3_linha-this.a3)
+        document.getElementById("results_pcXTRLR").value = this.delta_x.toFixed(5)
+        document.getElementById("results_pcYTRLR").value = this.delta_y.toFixed(5)
+    }
+}
+
 function start(){
     modo('R')
     modo('RR')
